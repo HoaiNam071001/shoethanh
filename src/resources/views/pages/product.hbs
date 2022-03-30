@@ -1,0 +1,47 @@
+    <link rel="stylesheet" href="/css/app.css">
+
+    <div class="content-container">
+        <div class="products-container">
+                <div class="shoeBackground">
+                    {{#each data.product_img}}
+                    <img src="{{this}}" alt="" class="shoe show img-product-now" color="blue">
+                    {{/each}}
+                </div>
+                <div class="info">
+                    <div class="shoeName">
+                        <div>
+                            <h1 class="big name-product">{{data.name}}</h1>
+                            <span class="new">new</span>
+                        </div>
+                    </div>
+                    <div class="color-container">
+                        <h3 class="title">Color</h3>
+                        <div class="colors-choice">
+                            {{#each data.color}}
+                                <span class="color" primary="{{this}}" color="{{this}}" action="changeColor()"></span>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="size-container">
+                        <h3 class="title">size</h3>
+                        <div class="sizes">
+                            {{#each data.size}}
+                            <span class="size">{{this}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="buy-price">
+                        <button class="buy buy-add-button-click" id="{{data.id}}"><i class="fas fa-shopping-cart"></i>Add to card</button>
+                        <div class="price">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h1 class="price-product">{{data.price}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="content-section-title">Chi tiết về sản phẩm</div>
+        <div class="product-detail">
+            <div class="detail-text">{{data.description}}</div>
+        </div>
+    </div>
+

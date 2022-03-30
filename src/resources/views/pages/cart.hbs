@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="/css/cart.css">
+
+    
+    <div class="cart-section">
+        <div class="content-section-title">Your cart</div>
+        
+            <div class="cart">
+            <div class="cart-items">
+                    {{#if data.cart}}
+                    {{#each data.cart}}
+                    <div class="cart-item">
+                    <div class="left">
+                        <div class="cart-image">                        
+                        <div class="image-wrapper"><img src="{{img}}" class="image" /></div>                      
+                    </div>
+                    </div>
+                    <div class="right">
+                        <div class="name">{{name}}(size: {{size}}, màu: {{color}})</div>
+                        <div class="price {{id}}{{size}}{{color}}">{{mul price quantity}}</div>
+                        <div class="count">
+                        <input type="button" class="button" value="&lt;" onclick="changequantity1('{{id}}','{{size}}','{{color}}','{{price}}')"/>
+                        <div class="number" id="{{id}}{{size}}{{color}}">{{quantity}}</div>
+                        <input type="button" class="button" value="&gt;" onclick="changequantity2('{{id}}','{{size}}','{{color}}','{{price}}')"/>
+                        </div>
+                    </div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <h2>Không có sản phẩm nào trong giỏ</h2>
+                    {{/if}}
+                </div>
+            <div class="calc-cost">
+                <div class="calc-cost-item">
+                    <div class="cost-note">Tạm tính:</div>
+                    <div class="cost-value-default">${{mul data.sum 1}}</div>
+                </div>
+                <div class="calc-cost-item">
+                    <div class="cost-note">Thuế:</div>
+                    <div class="cost-value-tax">${{mul data.sum 0.1}}</div>
+                </div>
+                {{!-- <div class="calc-cost-item">
+                    <div class="cost-note">Vận chuyển:</div>
+                    <div class="cost-value-deliver">$2.50</div>
+                </div> --}}
+                <div class="calc-cost-item">
+                    <div class="cost-note">Tổng cộng:</div>
+                    $<div class="cost-value-total">{{mul data.sum 1.1}}</div>
+                </div>
+
+                <div class="calc-cost-item">
+                    <div class="cost-note">Tổng thanh toán:</div>
+                    <div class="cost-value-total-vnd">{{mulint (mul data.sum 1.1) 23000}}</div><span>&nbsp;VNĐ</span> 
+                </div>
+            </div>
+            </div>
+    </div>
+    <div class="payment-section">
+
+    <div class="content-section-title">Payment section</div>
+        <div class="payment-information">
+            <div class="information">
+            <div class="payment-part-name">Thông tin cá nhân:</div>
+            <span class="information-input">
+                <input class="clean-slide" id="fullname" type="text" /><label for="fullname">Họ và tên</label>
+                </span>
+                <span class="information-input">
+                <input class="clean-slide" id="phonenumber" type="text" /><label for="phonenumber">Điện thoại</label>
+                </span>
+                <span class="information-input">
+                <input class="clean-slide" id="location" type="text" /><label for="location">Địa chỉ</label>
+                </span>
+            </div>
+            <div class="payment-choice">
+                <div class="payment-part-name">Phương thức thanh toán:</div>
+                <div class="col-12 checkboxes">
+                    <input class="checkbox-tools" type="radio" name="tools" id="tool-4" checked> 
+                    <label class="for-checkbox-tools" for="tool-4">
+                        <i class="uil uil-crop-alt"></i>
+                        Momo
+                    </label>
+                    <input class="checkbox-tools" type="radio" name="tools" id="tool-5">
+                    <label class="for-checkbox-tools" for="tool-5">
+                        <i class="uil uil-brush-alt"></i>
+                        Paypal
+                    </label><!--
+                    --><input class="checkbox-tools" type="radio" name="tools" id="tool-6">
+                    <label class="for-checkbox-tools" for="tool-6">
+                        <i class="uil uil-image-resize-landscape"></i>
+                        COD
+                    </label>
+                </div>
+            </div>
+            <div class="confirm-payment">
+                <button class="blog-slider__button">THANH TOÁN</button>
+            </div>
+        </div>
+    </div>
