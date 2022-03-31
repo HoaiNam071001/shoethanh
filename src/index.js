@@ -7,7 +7,7 @@ const route = require('./routes');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const port =  process.env.PORT || 3070;
+const port = process.env.PORT || 3070;
 // Body-parser
 app.use(
     express.urlencoded({

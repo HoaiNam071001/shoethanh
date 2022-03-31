@@ -2,30 +2,20 @@
 const db = require('../config/db/DBconnection');
 
 exports.getItem = async (req, res, next) => {
-    try{
-        const item = await db.collection('products').get();
-        var i = true;
-        item.forEach((doc) => {
-            if(doc.id === req.params.name){
-                i = false;
-                var data ={id: doc.id,...doc.data()} ;
-                res.render('pages/product',{data}); 
-                return;
-            }
-        });
-        if(i) res.json('Invalid!');
-    }
-    catch (e){
-        res.send(e);
-    }
-    
+    const item = await db.collection('products').get();
+    var i = true;
+    item.forEach((doc) => {
+        if(doc.id === req.params.name){
+            i = false;
+            var data ={id: doc.id,...doc.data()} ;
+            res.render('pages/product',{data}); 
+            return;
+        }
+    });
+    if(i) res.json('Invalid!');
 }
 exports.add = async (req, res, next) => {
     try{
-        if(!req.session.user){
-            res.send('login');
-            return;
-        }
         if(!req.params.id){
             throw 'Fail';
         }
@@ -56,7 +46,7 @@ exports.add = async (req, res, next) => {
         else   {
              db.collection('users').doc(req.session.user).update({'cart': carts});
         } 
-        res.send("success");
+        res.json("success");
     }
     catch(err) {
         res.send(err);

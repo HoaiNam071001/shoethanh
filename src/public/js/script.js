@@ -130,9 +130,6 @@ $('.buy-add-button-click').on('click',(e)=>{
       if(data === 'success'){
         alert('Thêm vào giỏ hàng thành công');
       }
-      else if(data === 'login'){
-        location.href = '/login';
-      }
     },
   });
 })
@@ -191,7 +188,7 @@ function changequantity2(e,size,color,price) {
 }
 
 $('.blog-slider__button').on('click',()=>{
-  var name,phone,address;
+  var name,phone,loca;
   name = $('#fullname').val()?$('#fullname').val():"Default";
   phone = $('#phonenumber').val()?$('#phonenumber').val():"Default";
   address = $('#location').val()?$('#location').val():"Default";
